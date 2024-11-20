@@ -1,5 +1,7 @@
 package calculator
 
+import camp.nextstep.edu.missionutils.Console.readLine
+
 // 구분자입력 형식
 val SEPARATOR_COMMAND_FRONT = "//"
 val SEPARATOR_COMMAND_BACK = "\\\\n"
@@ -33,7 +35,7 @@ fun checkNegative(numberList: List<Int>) {
 fun main() {
     // 입력
     println("덧셈할 문자열을 입력해 주세요.")
-    val userInput = readlnOrNull() ?: ""
+    val userInput = readLine()
 
     // 구분자
     val userSeparator = getUserSeparator(userInput)
