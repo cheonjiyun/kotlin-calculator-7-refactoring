@@ -1,8 +1,10 @@
-# kotlin-calculator-precourse
+# kotlin-calculator-7-refactoring
 
 ## 리팩토링 중점
 
 ### 요구사항 맞추기
+
+- [ ] 공백이면 0
 
 - [x] 4주차에 나왔던 요구 사항 4에 맞추어, InputView와 OutputView 클래스를 구현한다.
 - [ ] 함수 10라인으로 해보기
@@ -42,5 +44,3 @@
 ### 계산
 
 - [x] 숫자들 더하기
-
-# kotlin-calculator-7-refactoring
