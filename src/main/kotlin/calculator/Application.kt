@@ -1,10 +1,13 @@
 package calculator
 
-import camp.nextstep.edu.missionutils.Console.readLine
+import calculator.view.InputView
+import calculator.view.OutputView
 
 // 구분자입력 형식
 const val SEPARATOR_COMMAND_FRONT = "//"
 const val SEPARATOR_COMMAND_BACK = "\\\\n"
+
+//const val SEPERLATOR = "1"
 
 fun getUserSeparator(userInput: String): String? {
     val separatorRegex = Regex("(?<=${SEPARATOR_COMMAND_FRONT})(.*?)(?=${SEPARATOR_COMMAND_BACK})") // 정규식
@@ -32,10 +35,13 @@ fun checkNegative(numberList: List<Int>) {
     }
 }
 
+
 fun main() {
+    val inputView = InputView()
+    val outputView = OutputView()
+
     // 입력
-    println("덧셈할 문자열을 입력해 주세요.")
-    val userInput = readLine()
+    val userInput = inputView.inputString()
 
     // 구분자
     val userSeparator = getUserSeparator(userInput)
@@ -45,5 +51,5 @@ fun main() {
     checkNegative(numberList)
 
     // 합
-    println("결과 : ${numberList.sum()}")
+    outputView.printResult(numberList.sum())
 }
