@@ -3,8 +3,8 @@ package calculator
 import camp.nextstep.edu.missionutils.Console.readLine
 
 // 구분자입력 형식
-val SEPARATOR_COMMAND_FRONT = "//"
-val SEPARATOR_COMMAND_BACK = "\\\\n"
+const val SEPARATOR_COMMAND_FRONT = "//"
+const val SEPARATOR_COMMAND_BACK = "\\\\n"
 
 fun getUserSeparator(userInput: String): String? {
     val separatorRegex = Regex("(?<=${SEPARATOR_COMMAND_FRONT})(.*?)(?=${SEPARATOR_COMMAND_BACK})") // 정규식
