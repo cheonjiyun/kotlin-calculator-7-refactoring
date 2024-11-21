@@ -8,7 +8,6 @@ import calculator.view.InputView
 import calculator.view.OutputView
 
 class Controller(private val inputView: InputView, private val outputView: OutputView) {
-
     fun getUserSeparator(userInput: String): String? {
         val separatorRegex = Regex("(?<=$SEPARATOR_COMMAND_FRONT)(.*?)(?=$SEPARATOR_COMMAND_BACK)") // 정규식
         return separatorRegex.find(userInput)?.value
@@ -40,9 +39,10 @@ class Controller(private val inputView: InputView, private val outputView: Outpu
         // 입력
         val userInput = inputView.inputString()
 
+
         // 구분자
         val userSeparator = getUserSeparator(userInput)
-        val separator = Separator(mutableListOf(",", ":"))
+        val separator = Separator(defaultSeparators)
         userSeparator?.let { separator.addSeperator(it) }
 
         // 숫자
@@ -51,5 +51,11 @@ class Controller(private val inputView: InputView, private val outputView: Outpu
 
         // 합
         calculator.sum()
+
     }
+
+    companion object {
+        val defaultSeparators = mutableListOf(",", ":")
+    }
+
 }

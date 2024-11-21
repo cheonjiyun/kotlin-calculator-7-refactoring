@@ -1,6 +1,8 @@
 package calculator.model
 
 class Separator(val separators: MutableList<String>) {
+
+
     fun addSeperator(string: String) {
         separators.addLast(string)
     }
@@ -8,4 +10,6 @@ class Separator(val separators: MutableList<String>) {
     fun getSeperator(): List<String> {
         return separators
     }
+
+
 }
