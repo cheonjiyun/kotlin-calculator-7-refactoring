@@ -7,8 +7,6 @@ import calculator.view.OutputView
 const val SEPARATOR_COMMAND_FRONT = "//"
 const val SEPARATOR_COMMAND_BACK = "\\\\n"
 
-//const val SEPERLATOR = "1"
-
 fun getUserSeparator(userInput: String): String? {
     val separatorRegex = Regex("(?<=${SEPARATOR_COMMAND_FRONT})(.*?)(?=${SEPARATOR_COMMAND_BACK})") // 정규식
     return separatorRegex.find(userInput)?.value
@@ -22,8 +20,11 @@ fun getNumberList(userInput: String, userSeparator: String?): List<Int> {
     //구분자입력 이후로 숫자만 추출
     val onlyNumberInputString = userInput.substring(onlyNumberInputStringIndex)
 
+    val separator = Separator(mutableListOf(",", ":"))
+
     try {
-        return onlyNumberInputString.split(",|:|${userSeparator}".toRegex()).map { it.toInt() }
+        return onlyNumberInputString.split("${separator.getSeperator().joinToString("|")}|${userSeparator}".toRegex())
+            .map { it.toInt() }
     } catch (err: NumberFormatException) {
         throw IllegalArgumentException()
     }
@@ -39,6 +40,7 @@ fun checkNegative(numberList: List<Int>) {
 fun main() {
     val inputView = InputView()
     val outputView = OutputView()
+
 
     // 입력
     val userInput = inputView.inputString()

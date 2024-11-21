@@ -1,6 +1,7 @@
 package calculator
 
-class Seperator(val seperators: List<String>) {
+class Separator(val seperators: MutableList<String>) {
+
 
     fun addSeperator(string: String) {
         seperators.addLast(string)
