@@ -21,9 +21,10 @@ fun getNumberList(userInput: String, userSeparator: String?): List<Int> {
     val onlyNumberInputString = userInput.substring(onlyNumberInputStringIndex)
 
     val separator = Separator(mutableListOf(",", ":"))
+    userSeparator?.let { separator.addSeperator(it) }
 
     try {
-        return onlyNumberInputString.split("${separator.getSeperator().joinToString("|")}|${userSeparator}".toRegex())
+        return onlyNumberInputString.split(separator.getSeperator().joinToString("|").toRegex())
             .map { it.toInt() }
     } catch (err: NumberFormatException) {
         throw IllegalArgumentException()
