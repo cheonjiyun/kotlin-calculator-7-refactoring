@@ -13,13 +13,18 @@ class Controller(private val inputView: InputView, private val outputView: Outpu
         return separatorRegex.find(userInput)?.value
     }
 
-    private fun getNumberList(userInput: String, userSeparator: String?, separator: Separator): List<Int> {
+
+    private fun getOnlyNumberStringInInput(userInput: String, userSeparator: String?): String {
         //구분자입력까지 길이
         val onlyNumberInputStringIndex =
             userSeparator?.length?.plus(SEPARATOR_COMMAND_FRONT.length + SEPARATOR_COMMAND_BACK.length - 1) ?: 0
 
         //구분자입력 이후로 숫자만 추출
-        val onlyNumberInputString = userInput.substring(onlyNumberInputStringIndex)
+        return userInput.substring(onlyNumberInputStringIndex)
+    }
+
+    private fun getNumberList(userInput: String, userSeparator: String?, separator: Separator): List<Int> {
+        val onlyNumberInputString = getOnlyNumberStringInInput(userInput, userSeparator)
 
         val splitNumbers = onlyNumberInputString.split(separator.getSeperator().joinToString("|").toRegex())
         // 숫자로 바꿀 수 있는지 먼저 확인
