@@ -6,5 +6,4 @@ class Calculator(private val numberList: List<Int>, private val outputView: Outp
     fun sum() {
         outputView.printResult(numberList.sum())
     }
-
 }

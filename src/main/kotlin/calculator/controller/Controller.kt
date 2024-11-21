@@ -8,12 +8,12 @@ import calculator.view.InputView
 import calculator.view.OutputView
 
 class Controller(private val inputView: InputView, private val outputView: OutputView) {
-    fun getUserSeparator(userInput: String): String? {
+    private fun getUserSeparator(userInput: String): String? {
         val separatorRegex = Regex("(?<=$SEPARATOR_COMMAND_FRONT)(.*?)(?=$SEPARATOR_COMMAND_BACK)") // 정규식
         return separatorRegex.find(userInput)?.value
     }
 
-    fun getNumberList(userInput: String, userSeparator: String?, separator: Separator): List<Int> {
+    private fun getNumberList(userInput: String, userSeparator: String?, separator: Separator): List<Int> {
         //구분자입력까지 길이
         val onlyNumberInputStringIndex =
             userSeparator?.length?.plus(SEPARATOR_COMMAND_FRONT.length + SEPARATOR_COMMAND_BACK.length - 1) ?: 0
@@ -27,7 +27,7 @@ class Controller(private val inputView: InputView, private val outputView: Outpu
         return splitNumbers.map { if (it == "") 0 else it.toInt() }
     }
 
-    fun checkNumberAndPositive(numberList: List<String>) {
+    private fun checkNumberAndPositive(numberList: List<String>) {
         if (numberList.any {
                 !it.matches(Regex("\\d+"))
             }) {
@@ -38,7 +38,6 @@ class Controller(private val inputView: InputView, private val outputView: Outpu
     fun runController() {
         // 입력
         val userInput = inputView.inputString()
-
 
         // 구분자
         val userSeparator = getUserSeparator(userInput)
@@ -51,7 +50,6 @@ class Controller(private val inputView: InputView, private val outputView: Outpu
 
         // 합
         calculator.sum()
-
     }
 
     companion object {
