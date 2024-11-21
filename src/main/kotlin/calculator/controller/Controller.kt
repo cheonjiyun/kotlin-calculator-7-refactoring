@@ -2,7 +2,8 @@ package calculator.controller
 
 import calculator.SEPARATOR_COMMAND_BACK
 import calculator.SEPARATOR_COMMAND_FRONT
-import calculator.Separator
+import calculator.model.Calculator
+import calculator.model.Separator
 import calculator.view.InputView
 import calculator.view.OutputView
 
@@ -46,8 +47,9 @@ class Controller(private val inputView: InputView, private val outputView: Outpu
 
         // 숫자
         val numberList = getNumberList(userInput, userSeparator, separator)
+        val calculator = Calculator(numberList, outputView)
 
         // 합
-        outputView.printResult(numberList.sum())
+        calculator.sum()
     }
 }
