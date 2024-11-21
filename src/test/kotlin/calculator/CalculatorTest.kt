@@ -28,7 +28,6 @@ class CalculatorTest {
         return outputMessage.toString().trim()
     }
 
-
     @Test
     fun `숫자 더한 결과가 나온다`() {
         val numberList = mutableListOf(1, 2, 5)
